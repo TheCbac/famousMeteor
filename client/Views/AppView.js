@@ -38,12 +38,19 @@ function _addModuleSelectionView() {
 		moduleViewModifier.setOrigin([0,0]);
 
 		this.add(moduleViewModifier).add(moduleSelectionView);
+
+		//moduleSelectionView.addModule();
 		moduleSelectionView.addModule(undefined);
 		moduleSelectionView.addModule(undefined);
-		moduleSelectionView.addModule(undefined);
-		moduleSelectionView.addModule(undefined);
-		moduleSelectionView.addModule(undefined);
+		// moduleSelectionView.addModule(undefined);
+		// moduleSelectionView.addModule(undefined);
+		// moduleSelectionView.addModule(undefined);
+
 }
+
+
+
+
 
 // Establishes prototype chain for EmptyView class to inherit from View
 AppView.prototype = Object.create(View.prototype);

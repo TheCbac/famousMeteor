@@ -1,0 +1,1 @@
+SdModules = new Meteor.Collection('sdModules');
