@@ -10,21 +10,39 @@ AppView = function() {
     View.apply(this, arguments);
 
     _addDiagramView.call(this);
-}
+
+    _addModuleSelectionView.call(this);
+};
 
 function _addDiagramView() {
 	var diagramView = new DiagramView();
 
 	var diagramViewModifier = new StateModifier({
-		align: [1, 0],
-		origin: [0, 0]
+		size: [undefined,undefined],
 	});
+
+	diagramViewModifier.setAlign([0.8,0]);
+	diagramViewModifier.setOrigin([0.95,0]);
 
 	this.add(diagramViewModifier).add(diagramView);
 }
 
 function _addModuleSelectionView() {
+		var moduleSelectionView = new ModuleSelectionView();
 
+		var moduleViewModifier = new StateModifier({
+			size:[undefined,undefined]
+		});
+
+		moduleViewModifier.setAlign([0.8,0]);
+		moduleViewModifier.setOrigin([0,0]);
+
+		this.add(moduleViewModifier).add(moduleSelectionView);
+		moduleSelectionView.addModule(undefined);
+		moduleSelectionView.addModule(undefined);
+		moduleSelectionView.addModule(undefined);
+		moduleSelectionView.addModule(undefined);
+		moduleSelectionView.addModule(undefined);
 }
 
 // Establishes prototype chain for EmptyView class to inherit from View

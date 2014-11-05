@@ -16,9 +16,9 @@ DiagramView = function() {
 
     this.mainNode = this.add(this.rootModifier);
 
-    _addPlaceholders.call(this.mainNode);
+    _addPlaceholders.call(this);
 
-}
+};
 
 function _addPlaceholders() {
 	for (var i=0; i < 6; i++) {
@@ -30,8 +30,10 @@ function _addPlaceholders() {
 		});
 
 		var placeHolderModifier = new StateModifier({
-			align: [0.25 + 0.25*(i%3), .33*(Math.floor(i/3) + 1)],
+			
+			align: [0.25 + 0.25*(i%3), 0.33*(Math.floor(i/3) + 1)],
 			origin: [0.5, 0.5]
+			
 		});
 
 		this.add(placeHolderModifier).add(placeHolderSurface);
@@ -44,7 +46,7 @@ DiagramView.prototype.constructor = DiagramView;
 
 DiagramView.prototype.addNewModule = function(moduleName) {
 
-}
+};
 
 // Default options for DiagramView class
 DiagramView.DEFAULT_OPTIONS = {};
