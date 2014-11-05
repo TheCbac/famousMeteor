@@ -2,7 +2,7 @@ Meteor.startup(function() {
 	if (SdModules.find().count()=== 0) {
 
 		powerModId = SdModules.insert({
-			name:'Power'
+			name:'Power',
 		});
 
 		controlModId = SdModules.insert({
@@ -27,103 +27,94 @@ Meteor.startup(function() {
 	}
 
 
-	if (PowerModules.find().count() === 0){
+	if (ModuleTypes.find().count() === 0){
 
-		linearPowerModId = PowerModules.insert({
+		linearPowerModId = ModuleTypes.insert({
 			name: "Linear Power Module",
-			level:1
+			type: "Power",
 		});
 
-		switchingPowerModId = PowerModules.insert({
+		switchingPowerModId = ModuleTypes.insert({
 			name: "Switching Power Module",
-			level:1
+			type: "Power",
 		});
-	}
 
-	if (ControlModules.find().count() === 0){
-		analogControlModId = ControlModules.insert({
+
+		analogControlModId = ModuleTypes.insert({
 			name: "Analog Control Module",
-			level:1
+			type: "Control",
 		});
 
-		PsoC4ModId = ControlModules.insert({
+		PsoC4ModId = ModuleTypes.insert({
 			name: "PSoC 4 Control Module",
-			level:1
+			type: "Control",
 		});
 
-		PsoC5ModId = ControlModules.insert({
+		PsoC5ModId = ModuleTypes.insert({
 			name: "PSoC 5 Control Module",
-			level:1
+			type: "Control",
 		});
-	}
 
-	if (ActuationModules.find().count() === 0){
-		BrushedDcActuationModId = ActuationModules.insert({
+		BrushedDcActuationModId = ModuleTypes.insert({
 			name: "Brushed DC Actuation Module",
-			level:1
+			type:"Actuation",
 		});
 
-		BrushlessDCActuationModId = ActuationModules.insert({
+		BrushlessDCActuationModId = ModuleTypes.insert({
 			name: "Brushless DC Actuation Module",
-			level:1
+			type:"Actuation",
 		});
 
-		LorentzForceActuationModId = ActuationModules.insert({
+		LorentzForceActuationModId = ModuleTypes.insert({
 			name: "Lorentz Force Actuation Module",
-			level:1
+			type:"Actuation",
 		});
-	}
 
-
-	if (SensingModules.find().count() === 0){
-		VoltageSensingModId = SensingModules.insert({
+		VoltageSensingModId = ModuleTypes.insert({
 			name: "Voltage Sensing Module",
-			level:1
+			type: "Sensing",
 		});
 
-		PressureSensingModId = SensingModules.insert({
+		PressureSensingModId = ModuleTypes.insert({
 			name: "Pressure Sensing Module",
-			level:1
+			type: "Sensing",
 		});
 
-		CurrentSensingModId = SensingModules.insert({
+		CurrentSensingModId = ModuleTypes.insert({
 			name: "Current Sensing Module",
-			level:1
+			type: "Sensing",
 		});
-	}
 
-	if (CommunicationsModules.find().count() === 0){
-		WifiCommModId = CommunicationsModules.insert({
+		WifiCommModId = ModuleTypes.insert({
 			name: "WiFi Communications Module",
-			level:1
+			type:"Communications",
 		});
 
-		BluetoothCommModId = CommunicationsModules.insert({
+		BluetoothCommModId = ModuleTypes.insert({
 			name: "Bluetooth Comm Module",
-			level:1
+			type:"Communications",
 		});
 
-		UARTCommModId = CommunicationsModules.insert({
+		UARTCommModId = ModuleTypes.insert({
 			name: "UART Comm Module",
-			level:1
+			type:"Communications",
 		});
-	}
 
-	if (EnergyModules.find().count() === 0){
-		LipoEnergyModId = EnergyModules.insert({
+		LipoEnergyModId = ModuleTypes.insert({
 			name: "LiPo Energy Module",
-			level:1
+			type: "Energy",
 		});
 
-		NineVoltEnergyModId = EnergyModules.insert({
+		NineVoltEnergyModId = ModuleTypes.insert({
 			name: "9V Battery Energy Module",
-			level:1
+			type: "Energy",
 		});
 
-		NuclearReactorEnergyModId = EnergyModules.insert({
+		NuclearReactorEnergyModId = ModuleTypes.insert({
 			name: "Nuclear Reactor Energy Module",
-			level:1
+			type: "Energy",
 		});
+
 	}
 
 

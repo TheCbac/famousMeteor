@@ -1,9 +1,12 @@
-PowerModules 			= new Meteor.Collection("powerModules");
-ControlModules 			= new Meteor.Collection("controlModules");
-ActuationModules 		= new Meteor.Collection("actuationModules");
-SensingModules 			= new Meteor.Collection("sensingModules");
-CommunicationsModules 	= new Meteor.Collection("communicationsModules");
-EnergyModules 			= new Meteor.Collection("energyModules");
+ModuleTypes = new Meteor.Collection('moduleTypes');
+
+
+// PowerModules 			= new Meteor.Collection("powerModules");
+// ControlModules 			= new Meteor.Collection("controlModules");
+// ActuationModules 		= new Meteor.Collection("actuationModules");
+// SensingModules 			= new Meteor.Collection("sensingModules");
+// CommunicationsModules 	= new Meteor.Collection("communicationsModules");
+// EnergyModules 			= new Meteor.Collection("energyModules");
 
 PowerUnits 				= new Meteor.Collection("powerUnits");
 ControlUnits 			= new Meteor.Collection("controlUnits");
