@@ -5,7 +5,7 @@ var Transform = require('famous/core/Transform');
 var StateModifier = require('famous/modifiers/StateModifier');
 
 // Constructor function for our EmptyView class
-function EmptyView() {
+EmptyView = function() {
 
     // Applies View's constructor function to EmptyView class
     View.apply(this, arguments);
