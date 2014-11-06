@@ -8,6 +8,8 @@ var MouseSync 		= require('famous/inputs/MouseSync');
 
 var Transitionable 	= require('famous/transitions/Transitionable');
 var SnapTransition 	= require('famous/transitions/SnapTransition');
+
+var Draggable = require('famous/modifiers/Draggable');
 Transitionable.registerMethod('spring', SnapTransition);
 
 
@@ -29,6 +31,7 @@ DiagramView = function() {
 
 };
 
+
 function _addPlaceholders() {
 
 
@@ -45,6 +48,8 @@ function _addPlaceholders() {
 
 	var node = this.add(positionModifier);
 
+	var placeHolderTypes = ['Power', 'Control', 'Actuation', 'Sensing', 'Communication', 'Energy'];
+
 	 for (var i=0; i < 6; i++) {
 		// var i =0;
 		var position = new Transitionable([0,0]);
@@ -58,42 +63,66 @@ function _addPlaceholders() {
 			}
 		});
 
+		placeHolderSurface.name = placeHolderTypes[i];
+
 		var placeHolderModifier = new StateModifier({
 			
 			align: [0.25 + 0.25*(i%3), 0.33*(Math.floor(i/3) + 1)],
 			origin: [0.5, 0.5]
 			
 		});
+
+
+
+		var placeHolderDraggable = new Draggable({});
 	
-		placeHolderSurface.pipe(sync);
+		// placeHolderSurface.pipe(sync);
+		placeHolderSurface.pipe(placeHolderDraggable);
 	
-		node.add(placeHolderModifier).add(placeHolderSurface);
+		// node.add(placeHolderModifier).add(placeHolderSurface);
 		// this.add(placeHolderModifier).add(placeHolderSurface);
 		// this.add(positionModifier).add(placeHolderModifier).add(placeHolderSurface);
-	 
+	 	this.add(placeHolderModifier).add(placeHolderDraggable).add(placeHolderSurface);
 
-	sync.on('update', function(data){
-		var currentPosition = position.get();
-		position.set([
-			currentPosition[0] + data.delta[0],
-			currentPosition[1] + data.delta[1]
-		]);
+	 	addModuleDraggable(placeHolderDraggable);
+	 	// placeHolderDraggable.on('end', function(data) {
+	 	// 	placeHolderDraggable.setPosition([0, 0], {
+	 	// 		method: 'spring',
+	 	// 		period: 150,
+	 	// 		velocity: data.velocity
+	 	// 	});
+	 	// });
 
-		// console.log(currentPosition);
-	});
+	// sync.on('update', function(data){
+	// 	var currentPosition = position.get();
+	// 	position.set([
+	// 		currentPosition[0] + data.delta[0],
+	// 		currentPosition[1] + data.delta[1]
+	// 	]);
 
-	sync.on('end', function(data){
-			var velocity = data.velocity;
-			position.set([0,0],{
-				method: 'spring',
-				period: 150,
-				velocity:velocity
-			});
-	});
+	// 	// console.log(currentPosition);
+	// });
+
+	// sync.on('end', function(data){
+	// 		var velocity = data.velocity;
+	// 		position.set([0,0],{
+	// 			method: 'spring',
+	// 			period: 150,
+	// 			velocity:velocity
+	// 		});
+	// });
 
 }
 
-
+function addModuleDraggable(draggableModifier) {
+	 	draggableModifier.on('end', function(data) {
+ 		draggableModifier.setPosition([0, 0], {
+ 			method: 'spring',
+ 			period: 150,
+ 			velocity: data.velocity
+ 		});
+ 	});
+}
 	
 
 }
